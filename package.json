@@ -10,13 +10,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^26.4.2"
+    "jest": "^26.4.2",
+    "nock": "^13.0.4"
   },
   "dependencies": {
     "bull": "^3.18.0",
     "bunyan": "^1.8.14",
     "common-tags": "^1.8.0",
-    "nock": "^13.0.4",
     "osmosis": "^1.1.10",
     "sentiment": "^5.0.2"
   }

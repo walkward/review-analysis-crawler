@@ -1,6 +1,9 @@
 const controller = require('./controller');
 const log = require('./utils/log');
 
+/**
+ * Run: invokes the controller which begins crawling process
+ */
 const run = async function run() {
   try {
     const topReviews = await controller({

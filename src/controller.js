@@ -4,6 +4,13 @@ const analysis = require('./analysis');
 const waitUntilDrained = require('./utils/wait-until-drained');
 const sortFakeReviews = require('./utils/sort-fake-reviews');
 
+/**
+ * Controller: orchestrates process flow
+ * @param {Object} startJobData
+ * @param {String} startJobData.url url where crawling should begin
+ * @param {Integer} startJobData.maxPages maximum number of pages
+ * @param {Integer} startJobData.page starting page position
+ */
 module.exports = async function controller(startJobData) {
   const crawlerQueue = await queues.setupQueue('Crawler', crawler);
   const analysisQueue = await queues.setupQueue('Analysis', analysis);

@@ -1,9 +1,14 @@
 const osmosis = require('osmosis');
 
-const serializeReviewData = require('./utils/serialize-review-data');
+const sanitizeReviewData = require('./utils/sanitize-review-data');
 const joinHrefOrigin = require('./utils/join-href-origin');
 const log = require('./utils/log');
 
+/**
+ * Crawler: fetches the reviews for the provided url
+ * @see {@link https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#job}
+ * @param {Job} job queue job provided by queue
+ */
 module.exports = function crawler(job) {
   return new Promise((resolve, reject) => {
     log.debug('[CrawlerJobStarted]', job.toJSON());
@@ -37,7 +42,7 @@ module.exports = function crawler(job) {
         user: '.review-wrapper h3 + span',
       })
       .data((data) => {
-        const review = serializeReviewData(data);
+        const review = sanitizeReviewData(data);
         result.reviews.push(review);
       })
       .log((msg) => log.debug('[CrawlerOsmosisLog] %s', msg))

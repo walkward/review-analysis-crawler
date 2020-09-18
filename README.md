@@ -12,11 +12,15 @@ Docker Compose is used to simplify running the application. See below for instal
 
 ## Testing
 
+Use the following to run the testing suite:
+
 ```sh
 docker-compose -f docker-compose.test.yml up --build
 ```
 
 ## Running
+
+Use the following to run the services:
 
 ```sh
 docker-compose -f docker-compose.prod.yml up --build

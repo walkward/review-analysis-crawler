@@ -6,6 +6,11 @@ const handleQueueFailure = (job, error) => log.error(`[${job.queue.name}JobFaile
 const handleQueueError = (error, queueName) => log.error(`[${queueName}JobError]`, error);
 const handleQueueComplete = (job) => log.debug(`[${job.queue.name}JobComplete]`, job.toJSON());
 
+/**
+ * Setup Queue: instantiates and configures and returns a queue
+ * @param {String} queueName name for the queue
+ * @param {Function} callback how to process messages
+ */
 async function setupQueue(queueName, callback) {
   const options = {
     redis: {

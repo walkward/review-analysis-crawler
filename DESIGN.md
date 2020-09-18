@@ -27,17 +27,22 @@ Functional Requirements:
 #### Controller Service
 
 The controller service orchestrates the flow of processing beginning with the original input
-and ends by printing the top three worst offenders. Controller service should be provided an input
-URL for the first page of reviews. The controller will queue the URL for crawling and then queue
-the extracted reviews for processing. Finally when both the crawler and analysis queues are empty
-the controller service will calculate and print the top three worst offenders of overly positive
-endorsements.
+and ends by returning the top three worst offenders. The controller takes a starting URL for
+input and then proceeds as follow:
+
+1. Queues the URL for crawling.
+2. Queues the review for analysis.
+3. Waits until crawler and analysis queues are empty.
+4. Fetches the list of queue jobs and sorts them by descending score.
+5. Returns the top three most overly positive endorsements.
 
 #### Queue Service
 
 A queue service is used to provide fault tolerance for both crawling and analysis processes.
 
 #### Crawler Service
+
+A crawler service is used for visiting web pages and extracting reviews.
 
 Input example:
 
@@ -65,6 +70,8 @@ Output example:
 ```
 
 #### Analysis Service
+
+An analysis service is used for performing analysis on the review content.
 
 Input example:
 
@@ -97,7 +104,7 @@ Output example:
 
 #### Determining Fake Reviews
 
-The analysis service uses a library named "Sentiment" which is a Node.js module that uses the AFINN-165 wordlist and Emoji Sentiment Ranking to perform sentiment analysis on arbitrary blocks of input text. AFINN is a list of words rated for valence with an integer between minus five (negative) and plus five (positive). Sentiment analysis is performed by cross-checking the string tokens (words, emojis) with the AFINN list and getting their respective scores. The comparative score is simply: sum of each token / number of tokens.
+The analysis service uses a library named "Sentiment" which is a Node.js module that uses the AFINN-165 wordlist and Emoji Sentiment Ranking to perform sentiment analysis on arbitrary blocks of input text. AFINN is a list of words rated for valence with an integer between minus five (negative) and plus five (positive). Sentiment analysis is performed by cross-checking the string tokens (words, emojis) with the AFINN list and getting their respective scores. The comparative score is simply: sum of each token / number of tokens. Please note both the title text and body text are used for analysis.
 
 ## Technologies Used
 
