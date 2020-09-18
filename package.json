@@ -1,5 +1,5 @@
 {
-  "name": "review-analysis-scraper",
+  "name": "review-analysis-crawler",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

@@ -1,3 +1,5 @@
+> IMPORTANT: Please see [DESIGN.md](DESIGN.md) document before getting started!
+
 ## Prerequisites
 
 Docker Compose is used to simplify running the application. See below for install details.
