@@ -1,0 +1,20 @@
+version: "3"
+services:
+  worker:
+    build:
+      context: .
+    depends_on:
+      - redis
+    command: npm run start
+    environment:
+      REDIS_HOST: redis
+      BUNYAN_LOG_LEVEL: info
+  redis:
+    image: redis:6-alpine
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"
+
+volumes:
+  redis-data:

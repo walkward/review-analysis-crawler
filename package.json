@@ -1,0 +1,23 @@
+{
+  "name": "review-analysis-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js | ./node_modules/.bin/bunyan",
+    "test": "jest --collect-coverage"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.4.2"
+  },
+  "dependencies": {
+    "bull": "^3.18.0",
+    "bunyan": "^1.8.14",
+    "common-tags": "^1.8.0",
+    "nock": "^13.0.4",
+    "osmosis": "^1.1.10",
+    "sentiment": "^5.0.2"
+  }
+}
